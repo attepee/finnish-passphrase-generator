@@ -25,6 +25,11 @@ label, input {
     margin: 0.1em;
 }
 
+#randCap, #cap, #noCap {
+    height: 1.2em;
+    width: 1.2em;
+}
+
 #wordCount, #wordSeparator {
     margin: 0.2em;
     padding: 0.2em;

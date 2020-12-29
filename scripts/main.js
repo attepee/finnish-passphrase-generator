@@ -26,16 +26,45 @@ function generatePassPhrase() {
     var pass = "";
     var wordCount = document.getElementById("wordCount").value;
     var wordSeparator = document.getElementById("wordSeparator").value;
+    var randCap = document.getElementById("randCap").checked
+    var cap = document.getElementById("cap").checked
 
     for (var i = 0; i < wordCount; i++) {
-        if (i < wordCount-1)
-            pass += wordlist[getRandom()].childNodes[0].nodeValue + wordSeparator;
-        else
-            pass += wordlist[getRandom()].childNodes[0].nodeValue;
+        if (i < wordCount-1) {
+            if (cap == true)
+                pass += capitalize(getWord() + wordSeparator);
+            else
+                pass += getWord() + wordSeparator;
+        }
+        else {
+            if (cap == true)
+                pass += capitalize(getWord());
+            else
+                pass += getWord();
+        }
     }
+
+    if (randCap == true)
+        pass = randomCapitalize(pass);
+
     document.getElementById("passphrase").innerHTML = pass;
 }
 
-function getRandom() {
-    return Math.floor((Math.random() * 94109) + 0);
+function getWord() {
+    return wordlist[getRandom(0, 94109)].childNodes[0].nodeValue
+}
+
+function getRandom(min, max) {
+    return Math.floor((Math.random() * max) + min);
+}
+
+function capitalize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+function randomCapitalize(str) {
+    var capStr = str.split("").map(function(c) {
+        return c[Math.round(Math.random())?"toUpperCase":"toLowerCase"]();
+    }).join("");
+    return capStr;
 }
