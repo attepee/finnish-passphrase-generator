@@ -7,23 +7,29 @@
     </head>
     <body>
         <div id="wrapper">
-            <h3>Finnish passphrase generator</h3>
-            <div id="options">
-                <form>
-                    <label for="wordCount">Number of words</label><br>
-                    <input type="number" min="2" max="20" id="wordCount" name="wordCount" value="4" /><br>
-                    <label for="wordSeparator">Word separator</label><br>
-                    <input type="text" maxlength="1" id="wordSeparator" name="wordSeparator" value="-" /><br>
-                    <label for="noCap">No caps</label>
-                    <input type="radio" id="noCap" name="capType" checked>
-                    <label for="cap">Capitals</label>
-                    <input type="radio" id="cap" name="capType">
-                    <label for="randCap">cApITalS</label>
-                    <input type="radio" id="randCap" name="capType">
-                    <input type="button" id="btn" name="btn" value="Generate" onclick="main()" />
-                </form>
+            <div id="generator">
+                <h3>Finnish passphrase generator</h3>
+                <div id="options">
+                    <form>
+                        <label for="wordCount">Number of words</label><br>
+                        <input type="number" min="2" max="20" id="wordCount" name="wordCount" value="4" /><br>
+                        <label for="wordSeparator">Word separator</label><br>
+                        <input type="text" maxlength="1" id="wordSeparator" name="wordSeparator" value="-" /><br>
+                        <label for="noCap">No caps</label>
+                        <input type="radio" id="noCap" name="capType" checked>
+                        <label for="cap">Capitals</label>
+                        <input type="radio" id="cap" name="capType">
+                        <label for="randCap">cApITalS</label>
+                        <input type="radio" id="randCap" name="capType">
+                        <input type="button" id="btn" name="btn" value="Generate" onclick="main()" />
+                    </form>
+                </div>
+                <div id="passphrase"></div>
             </div>
-            <div id="passphrase"></div>
+            <div>
+                <span>&copy; 2020 Atte P</span>
+                <a href="https://github.com/attepee/finnish-passphrase-generator">GitHub</a>
+            </div>
         </div>
     </body>
 </html>

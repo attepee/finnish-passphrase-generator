@@ -9,6 +9,12 @@ html {
     margin: 0 auto;
     padding: 0;
     width: 40em;
+}
+
+#generator {
+    margin: 0 auto;
+    padding: 0;
+    width: 40em;
     background-color: #eee;
     border-radius: 0.2em;
 }
@@ -47,4 +53,24 @@ label, input {
     background-color: #4d99db;
     font-size: 0.8em;
     color: #fff;
+}
+
+#btn:active, #btn:hover {
+    background-color: #84b2da;
+}
+
+a, a:visited{
+    text-decoration: none;
+    color: #4d99db;
+    font-size: 0.9em;
+    float: right;
+}
+
+a:active, a:hover {
+    color: #84b2da;
+}
+
+span {
+    font-size: 0.9em;
+    float: left;
 }
