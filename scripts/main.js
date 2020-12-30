@@ -1,6 +1,8 @@
 var wordlist = null;
 var hasSymbol = false;
 var forceSymbol = false;
+var hasNumber = false;
+var forceNumber = false;
 
 function main() {
     if (wordlist != null)
@@ -31,18 +33,23 @@ function generatePassPhrase() {
     var randCap = document.getElementById("randCap").checked;
     var cap = document.getElementById("cap").checked;
     var sym = document.getElementById("sym").checked;
+    var num = document.getElementById("num").checked;
     hasSymbol = false;
     forceSymbol = false;
+    hasNumber = false;
+    forceNumber = false;
 
     for (var i = 0; i < wordCount; i++) {
         if (i+1 == wordCount && !hasSymbol)
             forceSymbol = true;
+        else if (i+1 == wordCount && !hasNumber)
+            forceNumber = true; 
         if (cap)
-            pass += capitalize(getWord(sym));
+            pass += capitalize(getWord(sym, num));
         else if (randCap)
-            pass += randomCapitalize(getWord(sym));
+            pass += randomCapitalize(getWord(sym, num));
         else
-            pass += getWord(sym);
+            pass += getWord(sym, num);
         if (i < wordCount-1)
             pass += wordSeparator;
     }
@@ -50,15 +57,25 @@ function generatePassPhrase() {
     document.getElementById("passphrase").innerHTML = pass;
 }
 
-function getWord(sym) {
+function getWord(sym, num) {
+    var str = wordlist[getRandom(0, 94109)].childNodes[0].nodeValue;
     var r = Math.round(Math.random());
 
     if (sym && !hasSymbol && r || sym && forceSymbol) {
         hasSymbol = true;
-        return addSymbol(wordlist[getRandom(0, 94109)].childNodes[0].nodeValue);
+        str = addSymbol(str);
+    }
+
+    r = Math.round(Math.random());
+
+    if (num && !hasNumber && r || num && forceNumber) {
+        hasNumber = true;
+        str = addNumber(str);
     }
     else
-        return wordlist[getRandom(0, 94109)].childNodes[0].nodeValue;
+        return str;
+
+    return str;
 }
 
 function getRandom(min, max) {
@@ -80,4 +97,8 @@ function randomCapitalize(str) {
 function addSymbol(str) {
     var sym = "!#%&?@";
     return str += sym[getRandom(0, sym.length)];
+}
+
+function addNumber(str) {
+    return str += getRandom(0, 9);
 }

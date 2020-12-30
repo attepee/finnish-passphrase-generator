@@ -31,7 +31,7 @@ label, input {
     margin: 0.1em;
 }
 
-#randCap, #cap, #noCap, #sym {
+#randCap, #cap, #noCap, #sym, #num {
     height: 1.2em;
     width: 1.2em;
 }
