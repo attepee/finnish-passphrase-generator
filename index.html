@@ -11,24 +11,27 @@
                 <h3>Finnish passphrase generator</h3>
                 <div id="options">
                     <form>
-                        <label for="wordCount">Number of words</label><br>
-                        <input type="number" min="2" max="20" id="wordCount" name="wordCount" value="4" /><br>
-                        <label for="wordSeparator">Word separator</label><br>
-                        <input type="text" maxlength="1" id="wordSeparator" name="wordSeparator" value="-" /><br>
-                        <label for="noCap">No capitals</label>
-                        <input type="radio" id="noCap" name="capType" checked>
-                        <label for="cap">Capitals</label>
-                        <input type="radio" id="cap" name="capType">
-                        <label for="randCap">cApITalS</label>
-                        <input type="radio" id="randCap" name="capType">
-                        <label for="sym">Add symbol</label>
-                        <input type="checkbox" id="sym" name="sym">
-                        <label for="num">Add number</label>
-                        <input type="checkbox" id="num" name="num">
-                        <input type="button" id="btn" name="btn" value="Generate" onclick="main()" />
+                        <label class="InputLabel" for="wordCount">Number of words</label>
+                        <input class="textInput" id="wordCount" type="number" min="2" max="20" name="wordCount" value="4" />
+                        <br>
+                        <label class="InputLabel" for="wordSeparator">Word separator</label>
+                        <input class="textInput" id="wordSeparator" type="text" maxlength="1" name="wordSeparator" value="-" />
+                        <br>
+                        <label class="InputLabel" for="capType">Capitals</label>
+                        <select class="textInput" id="capType" name="capType">
+                            <option value="noCap">No capitals</option>
+                            <option value="cap">Capitals</option>
+                            <option value="randCap">cApITalS</option>
+                        </select>
+                        <br>
+                        <label for="sym">Add random symbol</label>
+                        <input class="checkbox" id="sym" type="checkbox" name="sym">
+                        <label for="num">Add random number</label>
+                        <input class="checkbox" id="num" type="checkbox" name="num">
+                        <input id="btn" type="button" name="btn" value="Generate" onclick="main()" />
+                        <input id="passphrase" type="text" disabled value=""/><input id="copyToClipboardBtn" type="button" name="copyToClipboardBtn" value="Copy" onclick="">
                     </form>
                 </div>
-                <div id="passphrase"></div>
             </div>
             <div>
                 <span>&copy; 2020 Atte P</span>
