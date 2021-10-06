@@ -25,55 +25,51 @@ function loadXMLDoc() {
     xmlHttpReq.open("GET", "wordlist/kotus-sanalista_v1.xml", true);
     xmlHttpReq.send();
 }
-  
+
 function generatePassPhrase() {
     var pass = "";
     var wordCount = document.getElementById("wordCount").value;
     var wordSeparator = document.getElementById("wordSeparator").value;
-    var randCap = document.getElementById("randCap").checked;
-    var cap = document.getElementById("cap").checked;
+    var capitals = document.getElementById("capType").value;
     var sym = document.getElementById("sym").checked;
     var num = document.getElementById("num").checked;
-    hasSymbol = false;
-    forceSymbol = false;
-    hasNumber = false;
-    forceNumber = false;
+    var hasSymbol = false;
+    var hasNumber = false;
 
-    for (var i = 0; i < wordCount; i++) {
-        if (i+1 == wordCount && !hasSymbol)
-            forceSymbol = true;
-        else if (i+1 == wordCount && !hasNumber)
-            forceNumber = true; 
-        if (cap)
-            pass += capitalize(getWord(sym, num));
-        else if (randCap)
-            pass += randomCapitalize(getWord(sym, num));
-        else
-            pass += getWord(sym, num);
-        if (i < wordCount-1)
-            pass += wordSeparator;
+    for (var i = 1; i <= wordCount; i++) {
+        pass += getWord(capitals);
+
+        if (sym && !hasSymbol &&getRandom(0, 2) == 1) {
+            pass += addSymbol();
+            hasSymbol = true;
+        }
+        else if (num && !hasNumber && getRandom(0, 2) == 1) {
+            pass += addNumber();
+            hasNumber = true
+        }
+        
+        if (i < wordCount)
+            pass += wordSeparator
+        else if (sym && !hasSymbol)
+            pass += addSymbol();
+        else if (num && !hasNumber)
+            pass += addNumber();
     }
 
-    document.getElementById("passphrase").innerHTML = pass;
+    document.getElementById("passphrase").value = pass;
 }
 
-function getWord(sym, num) {
+function getWord(capitals) {
     var str = wordlist[getRandom(0, 94109)].childNodes[0].nodeValue;
-    var r = Math.round(Math.random());
-
-    if (sym && !hasSymbol && r || sym && forceSymbol) {
-        hasSymbol = true;
-        str = addSymbol(str);
-    }
-
-    r = Math.round(Math.random());
-
-    if (num && !hasNumber && r || num && forceNumber) {
-        hasNumber = true;
-        str = addNumber(str);
-    }
-    else
+    
+    if (capitals == "noCap")
         return str;
+    else if (capitals == "fullCap")
+        str = fullCapitalize(str);
+    else if (capitals == "cap")
+        str = capitalize(str);
+    else if (capitals == "randCap")
+        str = randomCapitalize(str);
 
     return str;
 }
@@ -82,23 +78,27 @@ function getRandom(min, max) {
     return Math.floor((Math.random() * max) + min);
 }
 
+function fullCapitalize(str) {
+    return str.toUpperCase();
+}
+
 function capitalize(str){
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function randomCapitalize(str) {
-    var capStr = str.split("").map(function(c) {
+    var str = str.split("").map(function(c) {
         return c[Math.round(Math.random())?"toUpperCase":"toLowerCase"]();
     }).join("");
 
-    return capStr;
+    return str;
 }
 
-function addSymbol(str) {
+function addSymbol() {
     var sym = "!#%&?@";
-    return str += sym[getRandom(0, sym.length)];
+    return sym[getRandom(0, sym.length)];
 }
 
-function addNumber(str) {
-    return str += getRandom(0, 9);
+function addNumber() {
+    return getRandom(0, 9);
 }
