@@ -58,7 +58,7 @@ label, input, select {
     color: #fff;
 }
 
-#btn:active, #btn:hover {
+#btn:active, #btn:hover, #copyToClipboardBtn:active, #copyToClipboardBtn:hover {
     background-color: #84b2da;
 }
 
