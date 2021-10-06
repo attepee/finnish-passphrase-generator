@@ -102,3 +102,8 @@ function addSymbol() {
 function addNumber() {
     return getRandom(0, 9);
 }
+
+function copyToClipboard() {
+    var str = document.getElementById("passphrase").value;
+    navigator.clipboard.writeText(str);
+}
