@@ -58,14 +58,19 @@ label, input, select {
     color: #fff;
 }
 
-#btn:active, #btn:hover, #copyToClipboardBtn:active, #copyToClipboardBtn:hover {
+#btn:hover, #copyToClipboardBtn:hover {
     background-color: #84b2da;
+}
+
+#btn:active, #copyToClipboardBtn:active {
+    background-color: #7ca7cc;
 }
 
 #passphrase {
     width: 89%;
     padding: 0.2em;
     border: none;
+    border-radius: 0.2em 0 0 0.2em;
     background-color: #fff;
 }
 
@@ -74,6 +79,7 @@ label, input, select {
     width: 10%;
     padding: 0.2em;
     border: none;
+    border-radius: 0 0.2em 0.2em 0;
     background-color: #4d99db;
     color: #fff;
 }
