@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="styles/style.css">
         <script src="scripts/main.js" type="text/javascript"></script>
     </head>
-    <body>
+    <body onload="loadXMLDoc()">
         <div id="wrapper">
             <div id="generator">
                 <h3>Finnish passphrase generator</h3>
@@ -29,7 +29,7 @@
                         <input class="checkbox" id="sym" type="checkbox" name="sym">
                         <label for="num">Add random number</label>
                         <input class="checkbox" id="num" type="checkbox" name="num">
-                        <input id="btn" type="button" name="btn" value="Generate" onclick="main()" />
+                        <input id="btn" type="button" name="btn" value="Generate" onclick="generatePassPhrase()" />
                         <input id="passphrase" type="text" disabled value=""/><input id="copyToClipboardBtn" type="button" name="copyToClipboardBtn" value="Copy" onclick="copyToClipboard()">
                     </form>
                 </div>

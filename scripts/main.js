@@ -1,15 +1,4 @@
 var wordlist = null;
-var hasSymbol = false;
-var forceSymbol = false;
-var hasNumber = false;
-var forceNumber = false;
-
-function main() {
-    if (wordlist != null)
-        generatePassPhrase();
-    else
-        loadXMLDoc();
-}
 
 function loadXMLDoc() {
     var xmlHttpReq = new XMLHttpRequest();
@@ -18,8 +7,6 @@ function loadXMLDoc() {
         if (this.readyState == 4 && this.status == 200) {
             var xml = this.responseXML;
             wordlist = xml.getElementsByTagName("s");
-
-            generatePassPhrase();
         }
     };
     xmlHttpReq.open("GET", "wordlist/kotus-sanalista_v1.xml", true);
