@@ -26,20 +26,23 @@
                             <option value="randCap">cApITalS</option>
                         </select>
                         <br>
+                        <label class="InputLabel" for="specialLetterType">Use Ä, Ö and Å</label>
+                        <select class="textInput" id="specialLetterType" name="specialLetterType">
+                            <option value="useSpecialLetters">Yes</option>
+                            <option value="noSpecialLetters">No</option>
+                            <option value="onlySpecialLetters">Only</option>
+                        </select>
+                        <br>
                         <label for="sym">Add random symbol</label>
                         <input class="checkbox" id="sym" type="checkbox" name="sym">
                         <label for="num">Add random number</label>
                         <input class="checkbox" id="num" type="checkbox" name="num">
-                        <br>
-                        <label for="num">No words with Ä, Ö or Å</label>
-                        <input class="checkbox" id="noSpecialLetters" type="checkbox" name="noSpecialLetters">
                         <input id="btn" type="button" name="btn" value="Generate" onclick="generatePassPhrase()" />
                         <input id="passphrase" type="text" disabled value=""/><input id="copyToClipboardBtn" type="button" name="copyToClipboardBtn" value="Copy" onclick="copyToClipboard()">
                     </form>
                 </div>
             </div>
             <div>
-                <span>&copy; 2020 Atte P</span>
                 <a href="https://github.com/attepee/finnish-passphrase-generator">GitHub</a>
             </div>
         </div>

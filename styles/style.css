@@ -88,14 +88,8 @@ a, a:visited{
     text-decoration: none;
     color: #4d99db;
     font-size: 0.9em;
-    float: right;
 }
 
 a:active, a:hover {
     color: #84b2da;
-}
-
-span {
-    font-size: 0.9em;
-    float: left;
 }

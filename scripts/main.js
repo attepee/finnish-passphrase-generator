@@ -1,5 +1,6 @@
 var wordlist = [];
-var filteredWordlist = [];
+var noSpecialsfilteredWordlist = [];
+var onlySpecialsfilteredWordlist = [];
 
 function loadXMLDoc() {
     var xmlHttpReq = new XMLHttpRequest();
@@ -23,18 +24,20 @@ function generatePassPhrase() {
     var capitals = document.getElementById("capType").value;
     var sym = document.getElementById("sym").checked;
     var num = document.getElementById("num").checked;
-    var noSpecialLetters = document.getElementById("noSpecialLetters").checked;
+    var specialLetterType = document.getElementById("specialLetterType").value;
     var hasSymbol = false;
     var hasNumber = false;
 
-    if (noSpecialLetters && filteredWordlist.length == 0) {
+    if (specialLetterType != "useSpecialLetters" && 
+        noSpecialsfilteredWordlist.length == 0 &&
+        onlySpecialsfilteredWordlist.length == 0) {
         wordlist.forEach(word => {
-            /^[a-z]+$/g.test(word) ? filteredWordlist.push(word) : false ;
+            /^[^åäöÅÄÖ]+$/g.test(word) ? noSpecialsfilteredWordlist.push(word) : onlySpecialsfilteredWordlist.push(word) ;
         });
     }
 
     for (var i = 1; i <= wordCount; i++) {
-        pass += getWord(capitals, noSpecialLetters);
+        pass += getWord(capitals, specialLetterType);
 
         if (sym && !hasSymbol &&getRandom(0, 2) == 1) {
             pass += addSymbol();
@@ -56,11 +59,15 @@ function generatePassPhrase() {
     document.getElementById("passphrase").value = pass;
 }
 
-function getWord(capitals, noSpecialLetters) {
-    if(noSpecialLetters)
-        var str = filteredWordlist[getRandom(0, filteredWordlist.length - 1)];
+function getWord(capitals, specialLetterType) {
+    var str;
+
+    if(specialLetterType == "noSpecialLetters")
+        str = noSpecialsfilteredWordlist[getRandom(0, noSpecialsfilteredWordlist.length - 1)];
+    else if (specialLetterType == "onlySpecialLetters")
+        str = onlySpecialsfilteredWordlist[getRandom(0, onlySpecialsfilteredWordlist.length - 1)];
     else
-        var str = wordlist[getRandom(0, wordlist.length - 1)];
+        str = wordlist[getRandom(0, wordlist.length - 1)];
     
     if (capitals == "noCap")
         return str;
