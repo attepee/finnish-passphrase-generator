@@ -1,95 +1,154 @@
 html {
-    background-color: #fff;
-    font-size: 1.2em;
-    font-family: Verdana, sans-serif;
-    color: #333
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    color: #111
 }
 
 #wrapper {
+    width: 50%;
     margin: 0 auto;
-    padding: 0;
-    width: 35em;
+}
+
+#container {
+    width: 100%;
+    border-bottom: 2px solid #111;
 }
 
 #generator {
+    width: 90%;
     margin: 0 auto;
-    padding: 0;
-    width: 100%;
-    background-color: #eee;
-    border-radius: 0.2em;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding-bottom: 1em;
+    padding-top: 1em;
 }
 
-#options, h3 {
-    margin: 0 auto;
+h1 {
+    text-align: center;
     padding: 0.5em;
-    width: 80%;
+    border-bottom: 2px solid #111;
 }
 
-label, input, select {
-    margin: 0.2em 0 0.2em 0;
-    height: 2em;
+.inputSet {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    margin: 1em 0;
 }
 
-.InputLabel, .textInput{
-    width: 48%;
+.inputSetAlt {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    margin: 1em 0;
+}
+
+.label, .input, .checkboxLabel {
+    width: 50%;
     display: inline-block;
+    text-align: center;
+}
+
+.label {
+    font-size: 2em;
+}
+
+.checkboxLabel {
+    font-size: 2em;
 }
 
 .checkbox {
-    height: 1.2em;
-    width: 1.2em;
+    height: 2em;
+    width: 2em;
 }
 
-.textInput, select {
+.input {
     padding: 0.2em;
-    border: none;
+    border: 2px solid #111;
     border-radius: 0.2em;
-    color: #333;
-    font-size: 0.8em;
+    font-size: 1.3em;
+    background-color: #fff;
+    outline: none;
 }
 
 #btn {
     width: 100%;
-    padding: 0.2em;
-    border: none;
+    padding: 0.5em;
+    border: 2px solid #111;
     border-radius: 0.2em;
-    background-color: #4d99db;
+    background-color: #fff;
     font-size: 1em;
-    color: #fff;
+    color: #111;
+    font-weight: bold;
 }
 
 #btn:hover, #copyToClipboardBtn:hover {
-    background-color: #84b2da;
+    background-color: #eee;
 }
 
 #btn:active, #copyToClipboardBtn:active {
-    background-color: #7ca7cc;
+    background-color: #ddd;
 }
 
 #passphrase {
-    width: 89%;
-    padding: 0.2em;
-    border: none;
+    width: 90%;
+    padding: 0.5em;
+    border: 2px solid #111;
     border-radius: 0.2em 0 0 0.2em;
     background-color: #fff;
+    font-size: 1em;
 }
 
 #copyToClipboardBtn {
-    height: 2.4em;
+    height: 2.5em;
     width: 10%;
     padding: 0.2em;
-    border: none;
+    border: 2px solid #111;
+    border-left: none;
     border-radius: 0 0.2em 0.2em 0;
-    background-color: #4d99db;
-    color: #fff;
+    background-color: #fff;
+    color: #111;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 a, a:visited{
     text-decoration: none;
-    color: #4d99db;
-    font-size: 0.9em;
+    color: #111;
+    font-size: 1.5em;
 }
 
-a:active, a:hover {
-    color: #84b2da;
+a:hover {
+    color: #333;
+}
+
+a:active {
+    color: #555;
+}
+
+@media only screen and (max-width: 1300px) {
+    #wrapper {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #wrapper {
+        width: 100%;
+    }
+
+    .inputSet {
+        display: block;
+    }
+
+    .label {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    .input {
+        display: block;
+        width: 100%;
+    }
 }
